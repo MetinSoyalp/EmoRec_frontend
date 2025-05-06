@@ -1,8 +1,8 @@
 //This class contains classes neccessary for movie and movie recommendation results
 
 export interface CrewMember {
-    name: string;
-    role: string;
+    Actor: string;
+    Character: string;
 }
 
 export interface Movie {
@@ -25,7 +25,7 @@ export interface Movie {
 }
 
 export interface MovieRecommend {
-    movie: number,
+    movie: Movie,
     cos_sim: number,
     final_score: number,
 }

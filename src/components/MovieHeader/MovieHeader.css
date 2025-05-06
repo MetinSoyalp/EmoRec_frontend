@@ -1,0 +1,38 @@
+.div-MovieHeader{
+    display: block;
+    text-align: center;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.movieHeader {
+    list-style-type: none;
+    justify-content: space-between;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.movieHeaderItem {
+    display: block;
+    float: right;
+    text-align: center;
+    padding-right: 0.7%;
+    padding-left: 0.7%;
+    color: rgb(70, 70, 70);
+}
+
+.movieHeaderItem:first-child {
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: auto;
+    padding-right: 0.5%;
+    padding-left: 0.5%;
+}
+
+.movieTitle {
+    font-size: 32px;
+    color: black;
+}

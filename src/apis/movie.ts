@@ -20,6 +20,6 @@ export const getMoviePaginated = async (page: number): Promise<Movie[]> => { //N
 
 // List of MovieRecommend döndürüyör
 export const movieToMovieRecommend = async (movieID: string): Promise<MovieRecommend[]> => { //Not tested
-    const res = await api.get<MovieRecommend[]>(`recommend/${movieID}`);
+    const res = await api.get<MovieRecommend[]>(`movie/recommend/${movieID}`);
     return res.data;
 }

@@ -1,0 +1,46 @@
+.div-movie-recommend-slider {
+    border: 1px solid gray;
+    width: 92%;
+    margin-left: 2.6%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.slider-title{
+    margin-left: 4%;
+    font-weight: bold;
+}
+
+.slider-container {
+    width: 92%;
+    margin-left: 2%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #999 transparent;
+}
+
+.slider-track {
+    display: flex;
+    padding-bottom: 1%;
+    gap: 1rem;
+    width: max-content;
+}
+
+.slider-track > .div-movie-card:nth-child(even) {
+    background-color: #79ebeb;
+}
+
+.slider-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.slider-container::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 4px;
+}
+
+.slider-track > .div-movie-card:nth-child(even) {
+  background-color: #79ebeb;
+}

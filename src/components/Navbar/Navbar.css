@@ -1,0 +1,45 @@
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #79ebeb;
+}
+
+.navItem {
+    float: left;
+    margin-left: 0.5%;
+}
+
+.navItem:first {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;     /* Ensure it fills the parent */
+    width: 100%;
+}
+
+
+.navItem img {
+    padding-top: 12px;
+    object-fit: contain;
+}
+
+.navLogin {
+    float: right;
+    padding-right: 1%;
+}
+
+
+.navLink {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.navLink:hover {
+    background-color: #25ebeb;
+}
