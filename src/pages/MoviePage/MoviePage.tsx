@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import { Movie, MovieRecommend } from '../../types/Movie';
 import { findMovieById, movieToMovieRecommend } from '../../apis/movie'; 
-import Navbar from '../../components/Navbar/Navbar';
 import MovieHeader from '../../components/MovieHeader/MovieHeader';
 import MovieBody from '../../components/MovieBody/MovieBody';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
@@ -39,7 +38,6 @@ function MoviePage() { //For example api call
 
     return (
     <main>
-        <Navbar/>
         <div className='movie-info'>
             <MovieHeader movie={movie}/>
             <MovieBody movie={movie}/>

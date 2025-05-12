@@ -27,6 +27,7 @@
 
 .navLogin {
     float: right;
+    display: flex;
     padding-right: 1%;
 }
 
@@ -41,5 +42,21 @@
 
 /* Change the link color to #111 (black) on hover */
 .navLink:hover {
+    transition: background-color 0.3s ease;
+    background-color: #25ebeb;
+}
+
+.navButton {
+    all: unset; /* Resets all default button styles */
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hover effect same as .navLink */
+.navButton:hover {
     background-color: #25ebeb;
 }
