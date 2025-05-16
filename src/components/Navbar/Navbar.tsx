@@ -1,19 +1,23 @@
 import { useNavigate } from 'react-router-dom';
 import "./Navbar.css";
+import { User } from '../../types/User';
 //import { Link } from "react-router-dom"; //Daha sonrası için
 
 interface HotbarProps {
   userId: string | null;
   setUserId: (id: string | null) => void;
+  setUser: (user: User | null) => void;
 }
 
-function Navbar({ userId, setUserId }: HotbarProps){ //TODO: Improve later
+function Navbar({ userId, setUserId, setUser }: HotbarProps){ //TODO: Improve later
     const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('mockUserId');
         setUserId(null);
+        setUser(null);
         navigate("/");
+        window.location.reload(); //To update interface
     }; // <button onClick={handleLogout} className="navButton">Logout</button>
 
     return <div className="div-Navbar">
@@ -26,7 +30,7 @@ function Navbar({ userId, setUserId }: HotbarProps){ //TODO: Improve later
                 {
                     userId ?
                     <>
-                        <a href="/" className="navLink">Profile</a>
+                        <a href="/profile" className="navLink">Profile</a>
                         <button onClick={handleLogout} className="navButton">Logout</button>
                     </> //Logged In
                     :

@@ -29,3 +29,10 @@ export interface MovieRecommend {
     cos_sim: number,
     final_score: number,
 }
+
+export interface PaginatedMovieResponse {
+    page: number;
+    page_size: number;
+    total: number;
+    results: Movie[];  // List of movies in the current page
+}

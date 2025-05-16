@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./LoginPage.css"
+import { getUserInfo } from '../../apis/user';
 
 type LoginProps = {
     onLogin: (userId: string) => void;
@@ -14,9 +15,16 @@ function LoginPage({ onLogin }: LoginProps) {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (username === password) {
-            onLogin(username);
-            localStorage.setItem('mockUserId', username); // Store user in localStorage
-            navigate('/');
+            getUserInfo(username).then( result => {
+                if( result == null ){ //If user does not exist inside database
+                    alert("User does not exist")
+                } else{
+                    onLogin(username);
+                    localStorage.setItem('mockUserId', username); // Store user in localStorage
+                    navigate('/');
+                    window.location.reload();
+                }
+            } )        
         } else {
             alert('Username and password must match (mock condition)');
         }
