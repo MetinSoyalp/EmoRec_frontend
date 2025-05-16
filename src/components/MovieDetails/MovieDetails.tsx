@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Collapse } from 'react-collapse';
 import "./MovieDetails.css";
 import { Movie } from "../../types/Movie";
+import EmotionVector from '../EmotionVector/EmotionVector';
 
 interface Props{
     movie: Movie;
@@ -46,35 +47,37 @@ function MovieDetails({movie}: Props){
                     </div>
                 </Collapse>
             </li>
-            <li className='movieDetailsEmotionVector'>
-                <button className='collapsable' onClick={() => setIsEmotionOpen(!isEmotionOpen)}>Emotion Distribution</button>
-                <Collapse isOpened={isEmotionOpen}>
-                    <div className="emotion-table-wrapper">
-                        <table className='emotion-table'>
-                            <tr>
-                                <th>Anger</th>
-                                <th>Anticipation</th>
-                                <th>Disgust</th>
-                                <th>Fear</th>
-                                <th>Joy</th>
-                                <th>Love</th>
-                                <th>Optimism</th>
-                                <th>Pessimism</th>
-                                <th>Sadness</th>
-                                <th>Surprise</th>
-                                <th>Trust</th>
-                            </tr>
-                            <tr>
-                            {movie.M_EmotionVector?.map((emotionScore) => (
-                                <td>{emotionScore}</td>
-                            ) )}
-                            </tr>
-                        </table>
-                    </div>
-                </Collapse>
-            </li>
+            <EmotionVector emotionVector={movie.M_EmotionVector} />
         </ul>
     </div>
 }
 
 export default MovieDetails;
+
+            // <li className='movieDetailsEmotionVector'>
+            //     <button className='collapsable' onClick={() => setIsEmotionOpen(!isEmotionOpen)}>Emotion Distribution</button>
+            //     <Collapse isOpened={isEmotionOpen}>
+            //         <div className="emotion-table-wrapper">
+            //             <table className='emotion-table'>
+            //                 <tr>
+            //                     <th>Anger</th>
+            //                     <th>Anticipation</th>
+            //                     <th>Disgust</th>
+            //                     <th>Fear</th>
+            //                     <th>Joy</th>
+            //                     <th>Love</th>
+            //                     <th>Optimism</th>
+            //                     <th>Pessimism</th>
+            //                     <th>Sadness</th>
+            //                     <th>Surprise</th>
+            //                     <th>Trust</th>
+            //                 </tr>
+            //                 <tr>
+            //                 {movie.M_EmotionVector?.map((emotionScore) => (
+            //                     <td>{emotionScore}</td>
+            //                 ) )}
+            //                 </tr>
+            //             </table>
+            //         </div>
+            //     </Collapse>
+            // </li>

@@ -1,0 +1,22 @@
+.history-table-wrapper {
+    padding-top: 14px;
+}
+
+.history-table {
+    border-collapse: collapse;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.history-table td, .history-table th {
+    padding: 4px;
+    border: 1px solid #D6EEEE;
+}
+
+.history-table tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+
+.movieDetailsHistory {
+    list-style-type: none;
+}

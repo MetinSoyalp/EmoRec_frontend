@@ -29,7 +29,7 @@ function MoviePage() { //For example api call
             .then((recList) => {
                 setRecommendList(recList);
             })
-            .catch((err) => console.error("Failed to fetch movie:", err))
+            .catch((err) => console.error("Failed to find movie-movie recommendation:", err))
             .finally(() => setLoading(false));
         }, [id]);
 

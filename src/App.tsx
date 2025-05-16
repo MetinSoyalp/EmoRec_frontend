@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { Routes, Route } from "react-router-dom";
 import { getUserInfo } from './apis/user';
 import { User } from './types/User';
-import MoviePage from './pages/MoviePage/MoviePage';
-import MainPage from "./pages/MainPage/MainPage";
-import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import Navbar from './components/Navbar/Navbar';
-import LoginPage from './pages/LoginPage/LoginPage';
-import MovieListPage from './pages/MovieListPage/MovieListPage';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
+const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
+const MovieListPage = lazy(() => import("./pages/MovieListPage/MovieListPage"));
+const MoviePage = lazy(() => import("./pages/MoviePage/MoviePage"));
+const AboutUsPage = lazy(() => import("./pages/AboutUsPage/AboutUsPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
 
 function App() { //For example api call
   const [userId, setUserId] = useState<string | null>(null);
@@ -23,21 +23,23 @@ function App() { //For example api call
     }
   }, []);
 
-  //TODO: Profile sayfası oluşturup, genre ve emotion vector kısmı, User-Movie recommendation ekle.
   //TODO: Register sayfası oluştur.
+  //TODO: Add a button for adding watched movie.
   //TODO: Vector kısımlarını görsel grafik ile değiştir (tahminen library ile olacak).
 
   return (
     <>
       <Navbar userId={userId} setUserId={setUserId} setUser={setUser}/>
-      <Routes>
-        <Route path="/" element={<MainPage/>} />
-        <Route path="/movie_list" element={<MovieListPage/>} />
-        <Route path="/movie/:id" element={<MoviePage/>} />
-        <Route path="/about_us" element={<AboutUsPage/>} />
-        <Route path="/login" element={<LoginPage onLogin={setUserId}/>} />
-        {user && <Route path='/profile' element={<ProfilePage user={user} />} />}
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/movie_list" element={<MovieListPage />} />
+          <Route path="/movie/:id" element={<MoviePage />} />
+          <Route path="/about_us" element={<AboutUsPage />} />
+          <Route path="/login" element={<LoginPage onLogin={setUserId} />} />
+          {user && <Route path="/profile" element={<ProfilePage user={user} />} />}
+        </Routes>
+      </Suspense>
     </>
   )
 }

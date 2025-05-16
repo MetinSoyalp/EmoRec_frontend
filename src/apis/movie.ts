@@ -24,3 +24,8 @@ export const movieToMovieRecommend = async (movieID: string): Promise<MovieRecom
     const res = await api.get<MovieRecommend[]>(`movie/recommend/${movieID}`);
     return res.data;
 }
+
+export const getMoviesInBatch = async (movieIDs: string[]): Promise<Movie[]> => {
+    const res = await api.post<Movie[]>(`movie/get_in_batch`, movieIDs);
+    return res.data
+}

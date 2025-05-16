@@ -9,7 +9,7 @@ interface Props{
 function MovieRecommendSlider({recommendList}: Props){
 
     return <div className='div-movie-recommend-slider'>
-            <h3 className='slider-title'>Movies like this one</h3>
+            <h3 className='slider-title'>Movies you may like</h3>
             <div className="slider-container">
                 <div className="slider-track">
                     {recommendList.map((item, i) => (

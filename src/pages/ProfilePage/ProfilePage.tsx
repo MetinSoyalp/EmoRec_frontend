@@ -1,23 +1,62 @@
 import { useEffect, useState } from "react";
-import { User } from "../../types/User";
+import { User, WatchedMovie } from "../../types/User";
+import { MovieRecommend } from "../../types/Movie";
+import MovieRecommendSlider from "../../components/MovieRecommendSlider/MovieRecommendSlider";
+import { userMovieRecommendation } from "../../apis/user";
+import { getAllGenres } from "../../apis/genres";
+import EmotionVector from "../../components/EmotionVector/EmotionVector";
+import GenresVector from "../../components/GenresVector/GenresVecotr";
+import "./ProfilePage.css"
+import HistoryMovie from "../../components/HistoryMovie/HistoryMovie";
 
 type ProfileProps = {
     user: User;
 };
 
 function ProfilePage({ user }: ProfileProps) {
-    //Get all genres for genre vector info section as variable
-    //Add basic user info
-    //Add collapsable: for emotion and genre vector
-    //Add user-movie recommendation
+    const [genresNameList, setGenresNameList] = useState<string[]>([]);
+    const [recommendList, setRecommendList] = useState<MovieRecommend[]>([]);
+    const [movieHistoryList, setMovieHistoryList] = useState<WatchedMovie[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    //TODO: Add watched history
 
     useEffect( () => {
-        document.title = `EmoRec - Profile`
-    } );
+        document.title = `EmoRec - Profile`;
 
-    return <>
-        {user.Name}
-    </>
+        const sortedByDate = user.WatchedMovies.sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+        setMovieHistoryList(sortedByDate);
+
+        Promise.all([
+            getAllGenres(),
+            userMovieRecommendation(user.UserID),
+        ])
+        .then(([genList, recList]) => {
+            setGenresNameList(genList);
+            setRecommendList(recList);
+        })
+        .catch(err => {
+            console.error("Failed to load profile data:", err);
+        })
+        .finally(() => setLoading(false));
+
+    }, [user] );
+
+    if (loading) return <div>Loading...</div>;
+
+    return (
+    <main>
+        <div className="user-profile">
+            <h1>{user.Name}</h1>
+            <HistoryMovie historyList={movieHistoryList} />
+            <GenresVector genresNames={genresNameList} genresVector={user.U_GenreVector}/>
+            <EmotionVector emotionVector={user.U_EmotionVector} />
+            <MovieRecommendSlider recommendList={recommendList}/>
+        </div>
+    </main>
+    )
 
 }
 
