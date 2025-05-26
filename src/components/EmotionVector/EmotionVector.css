@@ -1,25 +1,44 @@
+/* Shared wrapper that controls width */
+.emotion-wrapper {
+    margin: 0 auto; /* center it */
+    box-sizing: border-box;
+}
+
+/* Button fills the wrapper */
 .collapsable {
     background-color: #79ebeb;
     color: black;
     cursor: pointer;
     padding: 18px;
-    width: 95%;
+    width: 100%; /* match wrapper */
     border: none;
     text-align: left;
     outline: none;
     font-size: 15px;
+    box-sizing: border-box;
 }
 
 .collapsable:hover {
     background-color: #25ebeb;
 }
 
-.emotion-table-wrapper {
-    overflow-x: auto;
-    width: 95%;
+/* Chart fills the wrapper */
+.emotion-chart-wrapper {
+    width: 100%; /* match wrapper */
     padding-top: 14px;
     padding-bottom: 14px;
     box-sizing: border-box;
+    height: 300px;
+}
+
+/* Keep this in case you still use the table somewhere */
+.emotion-table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    box-sizing: border-box;
+    height: 300px;
 }
 
 .emotion-table {
@@ -27,11 +46,14 @@
     padding-bottom: 10px;
 }
 
-.emotion-table td, .emotion-table th {
+.emotion-table td,
+.emotion-table th {
     padding: 4px;
     border: 1px solid black;
 }
 
 .movieDetailsEmotionVector {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
 }

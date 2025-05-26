@@ -1,4 +1,9 @@
+.user-profile {
+    width: 95%;
+    margin: 0 auto; /* Center profile block */
+}
+
 .user-profile > * {
     padding-top: 1%;
-    margin-left: 2.6%;
+    margin-left: 0; /* remove conflict */
 }

@@ -1,6 +1,7 @@
-
 .movieDetails {
     list-style-type: none;
+    padding: 0;
+    margin-left: 2.45%;
 }
 
 .movieDetails li {
@@ -8,12 +9,18 @@
     margin-bottom: 10px;
 }
 
+.collapsable-section {
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Adds spacing around both collapsable sections */
+}
+
 .collapsable {
     background-color: #79ebeb;
     color: black;
     cursor: pointer;
     padding: 18px;
-    width: 95%;
+    width: 100%;
     border: none;
     text-align: left;
     outline: none;
@@ -24,35 +31,20 @@
     background-color: #25ebeb;
 }
 
-.emotion-table-wrapper {
-    overflow-x: auto;
-    width: 95%;
-    padding-top: 14px;
-    padding-bottom: 14px;
-    box-sizing: border-box;
-}
-
-.emotion-table {
-    border-collapse: collapse;
-    padding-bottom: 10px;
-}
-
-.emotion-table td, .emotion-table th {
-    padding: 4px;
-    border: 1px solid black;
-}
-
 .actor-table-wrapper {
     padding-top: 14px;
+    width: 100%;
+    overflow-x: auto;
 }
 
 .actor-table {
     border-collapse: collapse;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 100%;
+    margin-top: 10px;
 }
 
-.actor-table td, .actor-table th {
+.actor-table th,
+.actor-table td {
     padding: 4px;
     border: 1px solid #D6EEEE;
 }

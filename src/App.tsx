@@ -25,7 +25,6 @@ function App() { //For example api call
 
   //TODO: Register sayfası oluştur.
   //TODO: Add a button for adding watched movie.
-  //TODO: Vector kısımlarını görsel grafik ile değiştir (tahminen library ile olacak).
 
   return (
     <>

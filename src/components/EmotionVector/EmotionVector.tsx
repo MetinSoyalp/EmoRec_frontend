@@ -1,47 +1,49 @@
 import { useState } from 'react';
 import { Collapse } from 'react-collapse';
+import {
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid
+} from 'recharts';
 import "./EmotionVector.css";
 
-interface Props{
-    emotionVector: number[] | undefined;
+interface Props {
+  emotionVector: number[] | undefined;
 }
 
-function EmotionVector({emotionVector}: Props){
+const emotionNames = [
+  "Anger", "Anticipation", "Disgust", "Fear", "Joy", 
+  "Love", "Optimism", "Pessimism", "Sadness", "Surprise", "Trust"
+];
 
-    const [isEmotionOpen, setIsEmotionOpen] = useState(false);
+function EmotionVector({ emotionVector }: Props) {
+  const [isEmotionOpen, setIsEmotionOpen] = useState(false);
 
-    return (
-    <li className='movieDetailsEmotionVector'>
-        <button className='collapsable' onClick={() => setIsEmotionOpen(!isEmotionOpen)}>Emotion Distribution</button>
-        <Collapse isOpened={isEmotionOpen}>
-            <div className="emotion-table-wrapper">
-                <table className='emotion-table'>
-                    <tbody>
-                        <tr key={"EmotionName"}>
-                            <th>Anger</th>
-                            <th>Anticipation</th>
-                            <th>Disgust</th>
-                            <th>Fear</th>
-                            <th>Joy</th>
-                            <th>Love</th>
-                            <th>Optimism</th>
-                            <th>Pessimism</th>
-                            <th>Sadness</th>
-                            <th>Surprise</th>
-                            <th>Trust</th>
-                        </tr>
-                        <tr>
-                            {emotionVector?.map((emotionScore, ind) => (
-                                <td key={ind}>{emotionScore}</td>
-                            ) )}
-                        </tr>
-                    </tbody>
-                </table>
+  const data = emotionNames.map((name, i) => ({
+    name,
+    value: emotionVector?.[i] ?? 0
+  }));
+
+  return (
+    <li className='movieDetailsEmotionVector collapsable-section'>
+        <div className="emotion-wrapper">
+            <button className='collapsable' onClick={() => setIsEmotionOpen(!isEmotionOpen)}>
+            Emotion Distribution
+            </button>
+            <Collapse isOpened={isEmotionOpen}>
+            <div className="emotion-chart-wrapper">
+                <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={data}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis domain={[0, 1]} />
+                    <Tooltip />
+                    <Bar dataKey="value" fill="#8884d8" />
+                </BarChart>
+                </ResponsiveContainer>
             </div>
-        </Collapse>
+            </Collapse>
+        </div>
     </li>
-    );
-
+  );
 }
 
 export default EmotionVector;
