@@ -7,3 +7,11 @@
     padding-top: 1%;
     margin-left: 0; /* remove conflict */
 }
+
+/* Target MovieRecommendSlider inside ProfilePage */
+.user-profile .div-movie-recommend-slider {
+  width: 100%; /* or your desired width */
+  margin: 0 auto; /* center if needed */
+  margin-top: 1.5%;
+  margin-bottom: 3%;
+}
