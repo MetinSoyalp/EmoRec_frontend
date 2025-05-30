@@ -15,7 +15,7 @@ function MovieDetails({ movie }: Props) {
         <div className='div-MovieDetails'>
             <ul className='movieDetails'>
                 <li className='movieDetailsGenre'>
-                    <b className='listTitle'>Genres:</b>
+                    <b className='listTitle'>Genres: </b>
                     {movie.Genres?.map((genre, i) => (
                         <span key={i} className="list-item">
                             {genre}{i < (movie.Genres?.length ?? 0) - 1 && ", "}
@@ -23,7 +23,7 @@ function MovieDetails({ movie }: Props) {
                     ))}
                 </li>
                 <li className='movieDetailsKeywords'>
-                    <b className='listTitle'>Keywords:</b>
+                    <b className='listTitle'>Keywords: </b>
                     {movie.Keywords?.map((keyword, i) => (
                         <span key={i} className="list-item">
                             {keyword}{i < (movie.Keywords?.length ?? 0) - 1 && ", "}

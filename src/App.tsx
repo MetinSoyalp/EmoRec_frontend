@@ -25,6 +25,8 @@ function App() { //For example api call
 
   //TODO: Register sayfası oluştur.
   //TODO: Add a button for adding watched movie.
+  //TODO: Add reviews to movie pages.
+  //TODO: Add user-user recommendation to profile.
 
   return (
     <>
@@ -33,7 +35,7 @@ function App() { //For example api call
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/movie_list" element={<MovieListPage />} />
-          <Route path="/movie/:id" element={<MoviePage />} />
+          <Route path="/movie/:id" element={<MoviePage user={user} />} />
           <Route path="/about_us" element={<AboutUsPage />} />
           <Route path="/login" element={<LoginPage onLogin={setUserId} />} />
           {user && <Route path="/profile" element={<ProfilePage user={user} />} />}

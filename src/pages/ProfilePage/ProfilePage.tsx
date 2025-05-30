@@ -19,8 +19,6 @@ function ProfilePage({ user }: ProfileProps) {
     const [movieHistoryList, setMovieHistoryList] = useState<WatchedMovie[]>([]);
     const [loading, setLoading] = useState(true);
 
-    //TODO: Add watched history
-
     useEffect( () => {
         document.title = `EmoRec - Profile`;
 
