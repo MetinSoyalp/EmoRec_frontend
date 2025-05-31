@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./LoginPage.css"
 import { getUserInfo } from '../../apis/user';
 
@@ -54,6 +54,9 @@ function LoginPage({ onLogin }: LoginProps) {
                     Login
                 </button>
             </form>
+            <p className="login-register-text">
+                Don't have an account? <Link to="/register" className="login-register-link">Register here</Link>
+            </p>
         </div>
     );
 }

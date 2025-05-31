@@ -13,6 +13,12 @@ export const getMoviePaginated = async (page: number): Promise<PaginatedMovieRes
     return res.data;
 }
 
+//Get all movies
+export const getAllMovies = async (): Promise<Movie[]> => { //Not tested
+    const res = await api.get<Movie[]>(`movie/get_all`);
+    return res.data;
+}
+
 // calculate_genres_vectors - belki
 // No return
 

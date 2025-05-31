@@ -75,3 +75,19 @@
         padding: 20px;
     }
 }
+
+.login-register-text {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.login-register-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-register-link:hover {
+    text-decoration: underline;
+}

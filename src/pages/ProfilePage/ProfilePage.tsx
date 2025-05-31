@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { User, WatchedMovie } from "../../types/User";
 import { MovieRecommend } from "../../types/Movie";
 import MovieRecommendSlider from "../../components/MovieRecommendSlider/MovieRecommendSlider";
@@ -16,16 +16,17 @@ type ProfileProps = {
 function ProfilePage({ user }: ProfileProps) {
     const [genresNameList, setGenresNameList] = useState<string[]>([]);
     const [recommendList, setRecommendList] = useState<MovieRecommend[]>([]);
-    const [movieHistoryList, setMovieHistoryList] = useState<WatchedMovie[]>([]);
     const [loading, setLoading] = useState(true);
+
+    // Memoized sorted history
+    const movieHistoryList = useMemo(() => {
+        return [...user.WatchedMovies].sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+    }, [user.WatchedMovies]);
 
     useEffect( () => {
         document.title = `EmoRec - Profile`;
-
-        const sortedByDate = user.WatchedMovies.sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        );
-        setMovieHistoryList(sortedByDate);
 
         Promise.all([
             getAllGenres(),

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import "./MovieListPage.css";
 import { Movie } from '../../types/Movie';
 import { getMoviePaginated } from '../../apis/movie';
@@ -47,9 +47,9 @@ function MovieListPage() { //For example api call
                             alt={movie.MovieName}
                         />
                         <div className="movie-list__details">
-                            <a href={`/movie/${movie.MovieID}`} className="movie-list__name">
+                            <Link to={`/movie/${movie.MovieID}`} className="movie-list__name">
                                 {movie.MovieName}
-                            </a>
+                            </Link>
                             <span className="movie-list__rating">
                                 Average Rating: {movie.RatingValue ?? "N/A"} ⭐
                             </span>

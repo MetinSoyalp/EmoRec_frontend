@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 import { User } from '../../types/User';
 //import { Link } from "react-router-dom"; //Daha sonrası için
@@ -23,19 +23,19 @@ function Navbar({ userId, setUserId, setUser }: HotbarProps){ //TODO: Improve la
     return <div className="div-Navbar">
         <ul className="navbar">
             <li className="navItem"> <img src="/potato.ico" alt="eeee" /> </li>
-            <li className="navItem"> <a href="/" className="navLink">Home</a> </li>
-            <li className="navItem"> <a href="/movie_list" className="navLink">Movies</a> </li>
-            <li className="navItem"> <a href="/about_us" className="navLink">About Us</a> </li>
+            <li className="navItem"> <Link to="/" className="navLink">Home</Link> </li>
+            <li className="navItem"> <Link to="/movie_list" className="navLink">Movies</Link> </li>
+            <li className="navItem"> <Link to="/about_us" className="navLink">About Us</Link> </li>
             <li className="navLogin">
                 {
                     userId ?
                     <>
-                        <a href="/profile" className="navLink">Profile</a>
+                        <Link to="/profile" className="navLink">Profile</Link>
                         <button onClick={handleLogout} className="navButton">Logout</button>
                     </> //Logged In
                     :
                     <>
-                        <a href="/login" className="navLink">Login</a>
+                        <Link to="/login" className="navLink">Login</Link>
                     </> //Not Logged In
                 }
             </li>

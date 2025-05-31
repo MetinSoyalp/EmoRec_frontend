@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { getUserInfo } from './apis/user';
 import { User } from './types/User';
 import Navbar from './components/Navbar/Navbar';
+const RegisterUserPage = lazy(() => import('./pages/RegisterUserPage/RegisterUserPage'));
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const MovieListPage = lazy(() => import("./pages/MovieListPage/MovieListPage"));
 const MoviePage = lazy(() => import("./pages/MoviePage/MoviePage"));
@@ -23,8 +24,6 @@ function App() { //For example api call
     }
   }, []);
 
-  //TODO: Register sayfası oluştur.
-  //TODO: Add reviews to movie pages.
   //TODO: Add user-user recommendation to profile.
 
   return (
@@ -38,6 +37,7 @@ function App() { //For example api call
           <Route path="/about_us" element={<AboutUsPage />} />
           <Route path="/login" element={<LoginPage onLogin={setUserId} />} />
           {user && <Route path="/profile" element={<ProfilePage user={user} />} />}
+          <Route path='/register' element={<RegisterUserPage/>} />
         </Routes>
       </Suspense>
     </>

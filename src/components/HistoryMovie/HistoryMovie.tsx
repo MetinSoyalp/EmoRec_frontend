@@ -4,6 +4,7 @@ import "./HistoryMovie.css";
 import { WatchedMovie } from '../../types/User';
 import { getMoviesInBatch } from '../../apis/movie';
 import { Movie } from '../../types/Movie';
+import { Link } from 'react-router-dom';
 
 interface Props{
     historyList: WatchedMovie[] | undefined;
@@ -41,7 +42,7 @@ function HistoryMovie({historyList}: Props){
                     <tbody>
                         {historyList?.map((history, ind) => (
                         <tr key={ind}>
-                            <td> <a href={`/movie/${movieList[ind].MovieID}`}> {movieList[ind].MovieName} </a> </td> 
+                            <td> <Link to={`/movie/${movieList[ind].MovieID}`}> {movieList[ind].MovieName} </Link> </td> 
                             <td>{history.date}</td>
                         </tr>
                     ) )}
