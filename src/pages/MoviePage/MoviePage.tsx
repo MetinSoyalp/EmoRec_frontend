@@ -8,6 +8,7 @@ import MovieBody from '../../components/MovieBody/MovieBody';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import MovieRecommendSlider from '../../components/MovieRecommendSlider/MovieRecommendSlider';
 import "./MoviePage.css";
+import MovieReviews from '../../components/MovieReviews/MovieReviews';
 
 type ProfileProps = {
     user: User | null;
@@ -49,6 +50,7 @@ function MoviePage({ user }: ProfileProps) { //For example api call
         </div>
         <MovieDetails movie={movie}/>
         <MovieRecommendSlider recommendList={recommendList}/>
+        <MovieReviews movieID={movie.MovieID}/>
     </main>
     )
 }

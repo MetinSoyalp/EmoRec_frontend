@@ -66,8 +66,8 @@
 }
 
 .movie-list__pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.5%;
-    margin-bottom: 1%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5%;
+  margin-bottom: 1%;
 }

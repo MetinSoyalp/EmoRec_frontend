@@ -1,0 +1,26 @@
+.div-movieReviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 2.5%;
+    padding-right: 5%;
+    overflow: hidden;
+}
+
+.movieReviews-title {
+    color: black;
+    font-weight: bold;
+}
+
+.review-list-container {
+    list-style: none;
+    padding: 0;
+    margin: 2;
+}
+
+.review-list-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5%;
+  margin-bottom: 1%;
+}

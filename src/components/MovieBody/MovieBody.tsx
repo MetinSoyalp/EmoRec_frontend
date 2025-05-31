@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import "./MovieBody.css"
 import { Movie } from "../../types/Movie";
+import "./MovieBody.css"
 
 interface Props{
     movie: Movie;
