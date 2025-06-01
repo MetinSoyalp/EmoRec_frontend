@@ -5,9 +5,10 @@ import MovieCard from '../MovieCard/MovieCard';
 
 interface Props{
     recommendList: MovieRecommend[],
+    title: string,
 }
 
-function MovieRecommendSlider({recommendList}: Props){
+function MovieRecommendSlider({recommendList, title}: Props){
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -18,7 +19,7 @@ function MovieRecommendSlider({recommendList}: Props){
     }, [recommendList]);
 
     return <div className='div-movie-recommend-slider'>
-            <h3 className='slider-title'>Movies you may like</h3>
+            <h3 className='slider-title'>{title}</h3>
             {
                 loading ? (
                     <div className="recommend-loading">Loading recommendations...</div>

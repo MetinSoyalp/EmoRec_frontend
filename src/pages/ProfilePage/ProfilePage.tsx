@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { User, WatchedMovie } from "../../types/User";
 import { MovieRecommend } from "../../types/Movie";
 import MovieRecommendSlider from "../../components/MovieRecommendSlider/MovieRecommendSlider";
-import { userMovieRecommendation } from "../../apis/user";
+import { userMovieRecommendation, userUserRecommendation } from "../../apis/user";
 import { getAllGenres } from "../../apis/genres";
 import EmotionVector from "../../components/EmotionVector/EmotionVector";
 import GenresVector from "../../components/GenresVector/GenresVecotr";
@@ -15,7 +15,8 @@ type ProfileProps = {
 
 function ProfilePage({ user }: ProfileProps) {
     const [genresNameList, setGenresNameList] = useState<string[]>([]);
-    const [recommendList, setRecommendList] = useState<MovieRecommend[]>([]);
+    const [recommendList_UserMovie, setRecommendList_UserMovie] = useState<MovieRecommend[]>([]);
+    const [recommendList_UserUser, setRecommendList_UserUser] = useState<MovieRecommend[]>([]);
     const [loading, setLoading] = useState(true);
 
     // Memoized sorted history
@@ -31,10 +32,12 @@ function ProfilePage({ user }: ProfileProps) {
         Promise.all([
             getAllGenres(),
             userMovieRecommendation(user.UserID),
+            userUserRecommendation(user.UserID),
         ])
-        .then(([genList, recList]) => {
+        .then(([genList, recList_UserMovie, recList_UserUser]) => {
             setGenresNameList(genList);
-            setRecommendList(recList);
+            setRecommendList_UserMovie(recList_UserMovie);
+            setRecommendList_UserUser(recList_UserUser);
         })
         .catch(err => {
             console.error("Failed to load profile data:", err);
@@ -52,7 +55,8 @@ function ProfilePage({ user }: ProfileProps) {
             <HistoryMovie historyList={movieHistoryList} />
             <GenresVector genresNames={genresNameList} genresVector={user.U_GenreVector}/>
             <EmotionVector emotionVector={user.U_EmotionVector} />
-            <MovieRecommendSlider recommendList={recommendList}/>
+            <MovieRecommendSlider recommendList={recommendList_UserMovie} title="Movies you may like"/>
+            <MovieRecommendSlider recommendList={recommendList_UserUser} title="Recommended by Viewers Who Share Your Taste"/>
         </div>
     </main>
     )

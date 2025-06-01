@@ -49,7 +49,7 @@ function MoviePage({ user }: ProfileProps) { //For example api call
             <MovieBody movie={movie}/>
         </div>
         <MovieDetails movie={movie}/>
-        <MovieRecommendSlider recommendList={recommendList}/>
+        <MovieRecommendSlider recommendList={recommendList} title='More like this'/>
         <MovieReviews movieID={movie.MovieID}/>
     </main>
     )

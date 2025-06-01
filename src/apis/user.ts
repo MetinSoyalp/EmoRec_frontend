@@ -33,3 +33,12 @@ export const userMovieRecommendation = async (userID: string): Promise<MovieReco
     })
     return res.data;
 }
+
+export const userUserRecommendation = async (userID: string): Promise<MovieRecommend[]> => { //Not tested
+    const res = await api.get<MovieRecommend[]>(`user/recommend_user`, {
+        headers: {
+            "X-User-Id": userID
+        }
+    })
+    return res.data;
+}
