@@ -14,7 +14,7 @@ function MovieReviews({ movieID }: ProfileProps) {
     const [renderedReviewList, setRenderedReviewList] = useState<Review[]>([]);
     const [total, setTotal] = useState(0);
     const [pageSize, setPageSize] = useState(10); // default fallback
-    const [pageNo, setPageNo] = useState(0);
+    const [pageNo, setPageNo] = useState(1);
     const [loading, setLoading] = useState(true);
 
     //For reviews: Requires reviews and reviewCard

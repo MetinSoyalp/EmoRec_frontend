@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { getUserInfo } from './apis/user';
 import { User } from './types/User';
 import Navbar from './components/Navbar/Navbar';
@@ -14,6 +14,7 @@ const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
 function App() { //For example api call
   const [userId, setUserId] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);
+  const location = useLocation(); // Get current route
 
   useEffect(() => {
     const stored = localStorage.getItem('mockUserId');
@@ -24,7 +25,13 @@ function App() { //For example api call
     }
   }, []);
 
-  //TODO: Add user-user recommendation to profile.
+  useEffect(() => {
+    if (location.pathname === "/profile" && userId) {
+      getUserInfo(userId).then(setUser).catch((err) => {
+        console.error("Failed to fetch user on profile route:", err);
+      });
+    }
+  }, [location.pathname, userId]);
 
   return (
     <>
