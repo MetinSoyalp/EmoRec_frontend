@@ -9,14 +9,19 @@ function AboutUsPage() { //Put project details to this page
         document.title = `EmoRec - About Us`
     } );
 
-    return (
-    <main>
-        <div>
-            <h1>Welcome</h1>
-            <p>Welcome to about us page of EmoRec - Emotion movie recommendation system.</p>
-        </div>
-    </main>
-    )
+return (
+        <main className="aboutus-page">
+            <section className="hero-section">
+                <div className="hero-text">
+                    <h1>About Us</h1>
+                    <p>
+                        Metin Soyalp - Potato, Founder <br/>
+                        Giray Yıldırım - Banana Viking, Co-Founder
+                    </p>
+                </div>
+            </section>
+        </main>
+    );
 }
 
 export default AboutUsPage
